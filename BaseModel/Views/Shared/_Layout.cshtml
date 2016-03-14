@@ -1,4 +1,5 @@
-﻿@model BaseModel.Models.BaseModels.BaseModel
+﻿@using BaseModel.Models.BaseModels
+@model BaseModel
 
 <!DOCTYPE html>
 
@@ -9,6 +10,19 @@
     @RenderSection("head")
 </head>
 <body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/Home/Index">Home</a>
+            </li>
+            @foreach (Site site in (ViewBag.Pages as List<Site>))
+            {
+                <li>
+                    <a href="/Home/Site/@site.PageID">@site.PageTitle</a>
+                </li>
+            }
+        </ul>
+    </nav>
     <div>
         @RenderBody()
     </div>
